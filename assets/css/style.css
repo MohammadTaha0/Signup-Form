@@ -307,6 +307,10 @@ input[type='radio']:checked:after {
 }
 
 .span_skills_cont {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-top: 10px;
 }
 
@@ -408,6 +412,10 @@ input[type='radio']:checked:after {
     .container .sign_up_cont{
         width: 83%;
     }
-
-
+    .search_cont {
+        top: 85%;
+    }
+    .span_skills{
+        font-size: 14px !important;
+    }
 }

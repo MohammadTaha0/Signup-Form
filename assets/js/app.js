@@ -1,24 +1,68 @@
 $(document).ready(function () {
 
-$(".dots").click(function () {
-    $(".dots").removeClass('active')
-    $(this).addClass('active');
-    id = $(this).data('id');
-    $(".slid_box").fadeOut('500');
-    setTimeout(() => {
-        $(".slid_box").removeClass('active');
-    }, 600);
-    setTimeout(() => {
-        $("#"+id).fadeIn()
-        $("#"+id).addClass('active')
-    }, 500);
-})
+    function repeat() {
+        if ($("#0").attr('class') === 'slid_box active') {
 
+            $("#0").fadeOut('500');
+            setTimeout(() => {
+                $(".dots[data-id=0]").removeClass('active')
+                $("#0").removeClass('active');
+            }, 600);
+            setTimeout(() => {
+                $(".dots[data-id=1]").addClass('active')
+                $("#1").addClass('active')
+                $("#1").fadeIn()
+            }, 500);
+        }
+        else if ($("#1").attr('class') === 'slid_box active') {
 
+            $("#1").fadeOut('500');
+            setTimeout(() => {
+                $(".dots[data-id=1]").removeClass('active')
+                $("#1").removeClass('active');
+            }, 600);
+            setTimeout(() => {
+                $(".dots[data-id=2]").addClass('active')
+                $("#2").addClass('active')
+                $("#2").fadeIn()
+            }, 500);
+        }
+        else if ($("#2").attr('class') === 'slid_box active') {
 
+            $("#2").fadeOut('500');
+            setTimeout(() => {
+                $(".dots[data-id=2]").removeClass('active')
+                $("#2").removeClass('active');
+            }, 600);
+            setTimeout(() => {
+                $(".dots[data-id=0]").addClass('active')
+                $("#0").addClass('active')
+                $("#0").fadeIn()
+            }, 500);
+        }
 
+    }
+    setInterval(() => {
+        repeat()
+    }, 5000);
 
+    $(".dots").click(function () {
+        $(".dots").removeClass('active')
+        $(this).addClass('active');
+        id = $(this).data('id');
+        $(".slid_box").fadeOut('500');
+        setTimeout(() => {
+            $(".slid_box").removeClass('active');
+        }, 600);
+        setTimeout(() => {
+            $("#" + id).fadeIn()
+            $("#" + id).addClass('active')
+        }, 500);
 
+        setInterval(() => {
+            repeat()
+        }, 5000);
+    })
 
     let skill = []
     $(".d_flex label").click(function () {
@@ -53,26 +97,21 @@ $(".dots").click(function () {
     $("#create").click(function () {
         email = $("#email").val()
         pass = $("#pass").val()
-        if(email.indexOf('@') != email.length-10)
-        {
-            if( email.indexOf('@') != email.length-12)
-            {
+        if (email.indexOf('@') != email.length - 10) {
+            if (email.indexOf('@') != email.length - 12) {
                 alert("Email Should be gmail or outlook")
             }
         }
-        else if(email.indexOf('.') != email.length-4)
-        {
+        else if (email.indexOf('.') != email.length - 4) {
             alert("Invalid Email")
         }
-        else if(pass.length < 8)
-        {
+        else if (pass.length < 8) {
             alert("Atlest 8 Chrachters")
         }
-        else if(skill.length == 0)
-        {
+        else if (skill.length == 0) {
             alert("Skills Are Compulsory")
         }
-        else{
+        else {
             alert("Account Successfully Created")
         }
     })
